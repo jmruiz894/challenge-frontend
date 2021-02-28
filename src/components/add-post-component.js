@@ -30,7 +30,39 @@ export default class AddPost extends Component {
         });
     }
 
-    
+    savePost() {
+        let data = {
+            title: this.state.title,
+            body: this.state.body
+        };
+
+        PostsServices.newPost(data)
+            .then(response => {
+                this.setState({
+                    id: response.data.id,
+                    title: response.data.title,
+                    body: response.data.body,
+                    published: response.data.published,
+
+                    submitted: true
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+
+    newPost() {
+        this.setState({
+            id: null,
+            title: "",
+            body: "",
+            published: false,
+
+            submitted: false
+        })
+    }
 
     render() {
         //
