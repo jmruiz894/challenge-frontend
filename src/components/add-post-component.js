@@ -65,6 +65,48 @@ export default class AddPost extends Component {
     }
 
     render() {
-        //
+      return (
+        <div className="submit-form">
+          {this.state.submitted ? (
+            <div>
+              <h4>You submitted successfully!</h4>
+              <button className="btn btn-success" onClick={this.newPost}>
+                Add
+              </button>
+            </div>
+          ) : (
+            <div>
+              <div className="form-group">
+                  <label htmlFor="title">Title</label>
+                  <input
+                      type="text"
+                      className="form-control"
+                      id="title"
+                      required="required"
+                      value={this.state.title}
+                      onChange={this.onChangeTitle}
+                      name="title"
+                  />
+              </div>
+    
+              <div className="form-group">
+                  <label htmlFor="body">Body</label>
+                  <input
+                      type="text"
+                      className="form-control"
+                      id="body"
+                      required="required"
+                      value={this.state.body}
+                      onChange={this.onChangeBody}
+                      name="body"
+                  />
+              </div>   
+              <button onClick={this.savePost} className="btn btn-success">
+                Submit
+              </button>
+            </div>
+          )}
+        </div>
+      );
     }
 }
