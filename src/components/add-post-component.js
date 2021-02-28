@@ -18,6 +18,18 @@ export default class AddPost extends Component {
         }
     }
 
+    onChangeTitle(e) {
+        this.setState({
+            title: e.target.value
+        });
+    }
+
+    onChangeBody(e) {
+        this.setState({
+            body: e.target.value
+        });
+    }
+
     
 
     render() {
