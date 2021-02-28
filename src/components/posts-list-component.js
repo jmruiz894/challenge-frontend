@@ -19,5 +19,29 @@ export default class PostsList extends Component {
         };
     }
 
-    
+    componentDidMount() {
+        this.retrievePosts();
+    }
+
+    onChangeSearchTitle(e) {
+        const searchTitle = e.target.value;
+
+        this.setState({
+            searchTitle: searchTitle
+        });
+    }
+
+    retrievePosts() {
+        PostsServices.getMultPosts()
+        .then(response => {
+            this.setState({
+                posts: response.data
+            });
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    }
+
 }
