@@ -112,7 +112,31 @@ export default class PostsList extends Component {
                     </div>
                   )}
                 </div>
-                
+                <div className="col-40">
+                    <h4>Posts List</h4>
+          
+                    <ul className="list-group">
+                        {posts &&
+                            posts.map((post, index) => (
+                                <li
+                                    className={
+                                      "list-group-item " +
+                                      (index === currentIndex ? "active" : "")
+                                    }
+                                    onClick={() => this.setActivePost(post, index)}
+                                    key={index}
+                                >
+                                    {post.title}
+                                </li>
+                          ))}
+                    </ul>
+                    <button
+                        className="m-3 btn btn-sm btn-danger"
+                        onClick={this.removeAllPosts}
+                    >
+                      Remove All
+                    </button>
+                  </div>
             </div>
         );
     }
