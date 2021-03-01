@@ -23,7 +23,31 @@ export default class Post extends Component {
     }
 
     componentDidMount() {
-      this.getPost(this.props.match.params.id);
+        this.getPost(this.props.match.params.id);
+    }
+
+    onChangeTitle(e) {
+        const title = e.target.value;
+    
+        this.setState(function(prevState) {
+            return {
+                currentPost: {
+                  ...prevState.currentPost,
+                  title: title
+                }
+            };
+        });
+    }
+  
+    onChangeBody(e) {
+        const body = e.target.value;
+        
+        this.setState(prevState => ({
+            currentPost: {
+              ...prevState.currentPost,
+              body: body
+            }
+        }));
     }
 
   render() {
