@@ -113,7 +113,83 @@ export default class Post extends Component {
         });
     }
 
-  render() {
-    //
-  }
+    render() {
+        const { currentPost } = this.state;
+
+        return (
+            <div>
+                {currentPost ? (
+                    <div className="edit-form">
+                        <h4>Post</h4>
+                        <form>
+                        <div className="form-group">
+                            <label htmlFor="title">Title</label>
+                            <input
+                            type="text"
+                            className="form-control"
+                            id="title"
+                            value={currentPost.title}
+                            onChange={this.onChangeTitle}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="body">Body</label>
+                            <input
+                            type="text"
+                            className="form-control"
+                            id="body"
+                            value={currentPost.body}
+                            onChange={this.onChangeBody}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label>
+                            <strong>Status:</strong>
+                            </label>
+                            {currentPost.published ? "Published" : "Pending"}
+                        </div>
+                        </form>
+
+                        {currentPost.published ? (
+                        <button
+                            className="badge badge-primary mr-2"
+                            onClick={() => this.updatePublished(false)}
+                        >
+                            UnPublish
+                        </button>
+                        ) : (
+                        <button
+                            className="badge badge-primary mr-2"
+                            onClick={() => this.updatePublished(true)}
+                        >
+                            Publish
+                        </button>
+                        )}
+
+                        <button
+                        className="badge badge-danger mr-2"
+                        onClick={this.deletePost}
+                        >
+                        Delete
+                        </button>
+
+                        <button
+                        type="submit"
+                        className="badge badge-success"
+                        onClick={this.updatePost}
+                        >
+                        Update
+                        </button>
+                        <p>{this.state.message}</p>
+                    </div>
+                ) : (
+                <div>
+                    <br />
+                    <p>Please click on a Post...</p>
+                </div>
+                )}
+            </div>
+        );
+    }
 }
