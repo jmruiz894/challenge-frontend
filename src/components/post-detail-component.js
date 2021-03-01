@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PostsService from "../services/PostsServices";
 
 export default class Post extends Component {
-  constructor(props) {
+    constructor(props) {
         super(props);
         this.onChangeTitle = this.onChangeTitle.bind(this);
         this.onChangeBody = this.onChangeBody.bind(this);
@@ -20,7 +20,11 @@ export default class Post extends Component {
         },
         message: ""
         };
-  }
+    }
+
+    componentDidMount() {
+      this.getPost(this.props.match.params.id);
+    }
 
   render() {
     //
