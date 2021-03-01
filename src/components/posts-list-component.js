@@ -44,4 +44,50 @@ export default class PostsList extends Component {
         });
     }
 
+    render() {
+      const { posts, currentPost, currentIndex } = this.state;
+        
+        return (
+            <div className="list row">
+                <div className="post col-60 border-info border-right border-top">
+                    {currentPost ? (
+                        <div>
+                            <h4>Post</h4>
+                            <div>
+                                <label>
+                                    <strong>Title:</strong>
+                                </label>{" "}
+                                {currentPost.title}
+                            </div>
+                            <div>
+                                <label>
+                                    <strong>Body:</strong>
+                                </label>{" "}
+                                {currentPost.body}
+                            </div>
+                            <div>
+                                <label>
+                                    <strong>Status:</strong>
+                                </label>{" "}
+                                {currentPost.published ? "Published" : "Pending"}
+                            </div>
+              
+                            <Link
+                                to={"/posts/" + currentPost.id}
+                                className="badge badge-warning"
+                            >
+                                Edit
+                            </Link>
+                        </div>
+                  ) : (
+                    <div>
+                        <br />
+                        <p>Please click on a Post...</p>
+                    </div>
+                  )}
+                </div>
+                
+            </div>
+        );
+    }
 }
