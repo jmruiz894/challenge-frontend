@@ -44,10 +44,73 @@ export default class Post extends Component {
         
         this.setState(prevState => ({
             currentPost: {
-              ...prevState.currentPost,
-              body: body
+                ...prevState.currentPost,
+                body: body
             }
         }));
+    }
+
+    getPost(id) {
+        PostsService.getOnePost(id)
+            .then(response => {
+                this.setState({
+                    currentPost: response.data
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+  
+    updatePublished(status) {
+        let data = {
+            id: this.state.currentPost.id,
+            title: this.state.currentPost.title,
+            body: this.state.currentPost.body,
+            published: status
+        };
+    
+        PostsService.modifyPost(this.state.currentPost.id, data)
+        .then(response => {
+            this.setState(prevState => ({
+              currentPost: {
+                  ...prevState.currentPost,
+                  published: status
+              }
+            }));
+            console.log(response.data);
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    }
+  
+    updatePost() {
+        PostsService.modifyPost(
+            this.state.currentPost.id,
+            this.state.currentPost
+        )
+        .then(response => {
+            console.log(response.data);
+            this.setState({
+                message: "The post was updated successfully!"
+            });
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    }
+  
+    deletePost() {    
+        PostsService.deletePost(this.state.currentPost.id)
+        .then(response => {
+            console.log(response.data);
+            this.props.history.push('/Posts')
+        })
+        .catch(e => {
+            console.log(e);
+        });
     }
 
   render() {
