@@ -1,16 +1,11 @@
 .App {
+  box-sizing: border-box;
   text-align: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -35,4 +30,52 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.list {
+  text-align: left;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 10px;
+  background-color: #e3f2fd;
+  padding: 20px;
+}
+
+.submit-form {
+  max-width: 500px;
+  margin: auto;
+  background-color: #e3f2fd;
+  padding: 20px;
+}
+
+.edit-form {
+  max-width: 500px;
+  margin: auto;
+  background-color: #e3f2fd;
+  padding: 20px;
+}
+
+.col-40 {
+  width: 40%;
+  float: left;
+}
+
+.col-60 {
+  width: 60%;
+  float: left;
+}
+
+.container {
+  background-color: #0d6dfd5e;
+  padding: 20px;
+  
+}
+
+nav.navbar {
+  background-color: #e3f2fd;
+}
+
+div.mt-3 {
+  display: flex;
+  justify-content: center;
 }
