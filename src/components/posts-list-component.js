@@ -44,6 +44,32 @@ export default class PostsList extends Component {
         });
     }
 
+    refreshList() {
+        this.retrievePosts();
+        this.setState({
+            currentPost: null,
+            currentIndex: -1
+        });
+    }
+
+    setActivePost(post, index) {
+        this.setState({
+            currentPost: post,
+            currentIndex: index
+        });
+    }
+
+    removeAllPosts() {
+        PostsServices.deletePost()
+        .then(response => {
+            console.log(response.data);
+            this.refreshList();
+        })
+        .catch(e => {
+            console.log(e);
+        })
+    }
+
     render() {
       const { posts, currentPost, currentIndex } = this.state;
         
