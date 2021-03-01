@@ -11,6 +11,23 @@ class App extends Component {
     render() {
         return (
           <div className="container container-fluid ">
+              <nav className="navbar navbar-expand navbar-light">
+                  <a href="#!" className="navbar-brand">
+                      App to Show Posts
+                  </a>
+                  <div className="navbar-nav mr-auto">
+                      <li className="nav-item">
+                          <Link to={"/Posts"} className="nav-link">
+                              Posts
+                          </Link>
+                      </li>
+                      <li className="nav-item">
+                          <Link to={"/add"} className="nav-link">
+                              Add
+                          </Link>
+                      </li>
+                  </div>
+              </nav>
               <div className="mt-3">
                   <Switch>
                       <Route exact path={["/", "/Posts"]} component={PostsList} />
